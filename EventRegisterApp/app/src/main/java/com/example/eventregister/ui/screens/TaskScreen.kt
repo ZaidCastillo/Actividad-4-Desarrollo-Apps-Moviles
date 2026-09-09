@@ -109,13 +109,15 @@ fun TaskScreen(
     }
 
     val totalCount = tasks.size
-    val completedCount = tasks.count { it.isCompleted }
+    val completedCount = remember(tasks) { tasks.count { it.isCompleted } }
     val pendingCount = totalCount - completedCount
 
-    val filteredTasks = when (currentFilter) {
-        TaskFilter.TODAS -> tasks
-        TaskFilter.PENDIENTES -> tasks.filter { !it.isCompleted }
-        TaskFilter.COMPLETADAS -> tasks.filter { it.isCompleted }
+    val filteredTasks = remember(tasks, currentFilter) {
+        when (currentFilter) {
+            TaskFilter.TODAS -> tasks
+            TaskFilter.PENDIENTES -> tasks.filter { !it.isCompleted }
+            TaskFilter.COMPLETADAS -> tasks.filter { it.isCompleted }
+        }
     }
 
     Scaffold(
@@ -285,7 +287,8 @@ fun TaskScreen(
                 ) {
                     items(
                         items = filteredTasks,
-                        key = { it.id }
+                        key = { it.id },
+                        contentType = { "task" }
                     ) { task ->
                         TaskItem(
                             task = task,

@@ -43,6 +43,8 @@ import com.example.eventregister.model.Event
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
+private val EventDateFormatter = DateTimeFormatter.ofPattern("d 'de' MMMM, yyyy", Locale("es", "ES"))
+
 /**
  * Tarjeta plegable que muestra un evento. Al tocarla, se expande/contrae
  * mostrando la descripción completa y un chip con la prioridad.
@@ -89,9 +91,7 @@ fun EventCard(
                         color = MaterialTheme.colorScheme.onSurface
                     )
                     Text(
-                        text = event.date.format(
-                            DateTimeFormatter.ofPattern("d 'de' MMMM, yyyy", Locale("es", "ES"))
-                        ),
+                        text = event.date.format(EventDateFormatter),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )

@@ -31,6 +31,7 @@ import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -55,8 +56,9 @@ fun TaskItem(
     onDelete: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-    val formattedDate = dateFormat.format(Date(task.dueDate))
+    val formattedDate = remember(task.dueDate) {
+        SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(task.dueDate))
+    }
 
     val cardAlpha = if (task.isCompleted) 0.85f else 1f
     val containerColor by animateColorAsState(
