@@ -8,10 +8,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.FormatListBulleted
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -45,7 +47,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun EventListScreen(
     viewModel: EventViewModel,
-    onAddEvent: () -> Unit
+    onAddEvent: () -> Unit,
+    onNavigateToTasks: (() -> Unit)? = null
 ) {
     val events = viewModel.events
     val snackbarHostState = remember { SnackbarHostState() }
@@ -55,6 +58,16 @@ fun EventListScreen(
         topBar = {
             TopAppBar(
                 title = { Text("Mis eventos") },
+                actions = {
+                    if (onNavigateToTasks != null) {
+                        IconButton(onClick = onNavigateToTasks) {
+                            Icon(
+                                imageVector = Icons.AutoMirrored.Filled.FormatListBulleted,
+                                contentDescription = "Ver tareas Room"
+                            )
+                        }
+                    }
+                },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.background
                 )
