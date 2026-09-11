@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Notes &amp; Tasks</string>
+    <string name="search_notes_placeholder">Buscar notas o tareas...</string>
+    <string name="add_note">Nueva Nota</string>
+    <string name="edit_note">Editar Nota</string>
+    <string name="title_hint">Título</string>
+    <string name="content_hint">Escribe tu nota aquí...</string>
+    <string name="save">Guardar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="delete">Eliminar</string>
+    <string name="undo">Deshacer</string>
+    <string name="note_deleted">Nota eliminada</string>
+    <string name="attach_image">Adjuntar Imagen</string>
+    <string name="all_notes">Todas</string>
+    <string name="pending_notes">Pendientes</string>
+    <string name="completed_notes">Completadas</string>
+    <string name="no_notes_title">¡No hay notas aún!</string>
+    <string name="no_notes_subtitle">Toca el botón + para crear tu primera nota o tarea interactiva.</string>
+</resources>
