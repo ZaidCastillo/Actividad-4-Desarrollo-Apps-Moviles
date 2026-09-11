@@ -1,0 +1,5 @@
+<resources>
+    <!-- Tema base mínimo: el theming visual real (colores, tipografía, claro/oscuro)
+         se define en Kotlin dentro de theme/Theme.kt usando Material3 + Compose. -->
+    <style name="Theme.EventRegisterApp" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>
